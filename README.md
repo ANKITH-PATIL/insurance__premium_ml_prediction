@@ -10,4 +10,12 @@ go on code and copy the https link of the repo
 go to terminal of your system
 git clone *paste the link* 
 ```
+```
+next steps : edit the repo using the VS code
+```
+```
+type dir in command prompt
+type cd *project name*
+type code . *for opening the file in the vscode*
+```
 
