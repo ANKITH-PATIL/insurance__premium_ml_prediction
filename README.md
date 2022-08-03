@@ -2,6 +2,12 @@
 This machine learning project predicts the premium of the insurance
 
 ```
+CI-CD Pipleine:
+
+CI: changing your code and sending the changes to the github 
+CD: When the deployement criteria satisfies then the trigger is triggered 
+
+```
 how to clone from github repo
 ```
 ```
@@ -44,10 +50,52 @@ how to deploy the model to heroku
 ```
 ```
 To setup CI/CD pipeline in heroku we need 3 information
-1. HEROKU_EMAIL = anishyadav7045075175@gmail.com
-2. HEROKU_API_KEY = <>
-3. HEROKU_APP_NAME = ml-regression-app
+1. HEROKU_EMAIL = ankithpatilbusiness@gmail.com
+2. HEROKU_API_KEY = 957321a3-aaea-4d90-a826-e9c5a897db68
+3. HEROKU_APP_NAME = insurance-premiumapp
+
 
 heroku api key you will get from the the account setting on the heroku website 
+```
+BUILD DOCKER IMAGE
+```
+docker build -t <image_name>:<tagname> .
+```
+> Note: Image name for docker must be lowercase
+
+
+To list docker image
+```
+docker images
+```
+
+Run docker image
+```
+docker run -p 5000:5000 -e PORT=5000 f8c749e73678
+```
+
+To check running container in docker
+```
+docker ps
+```
+
+Tos stop docker conatiner
+```
+docker stop <container_id>
+```
+
+```
+NEXT STEPS :
+```
+```
+create a folder .github
+and within that folder make another folder of workflows
+and within that create main.yaml file 
+
+then add readymade template to that file
+
+then add the secrets to your github account(in settings>> secrets>> actions>> new repo secrets) to make sure that whatever secrets u have put in the main.yaml file for the deployemnet of the contd deployement of the(changes u have done to the code) contd integration. 
+```
+```
 
 
