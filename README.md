@@ -51,7 +51,7 @@ how to deploy the model to heroku
 ```
 To setup CI/CD pipeline in heroku we need 3 information
 1. HEROKU_EMAIL = ankithpatilbusiness@gmail.com
-2. HEROKU_API_KEY = 957321a3-aaea-4d90-a826-e9c5a897db68
+2. HEROKU_API_KEY = <>
 3. HEROKU_APP_NAME = insurance-premiumapp
 
 
@@ -59,6 +59,8 @@ heroku api key you will get from the the account setting on the heroku website
 ```
 BUILD DOCKER IMAGE
 ```
+docker --version
+
 docker build -t <image_name>:<tagname> .
 ```
 > Note: Image name for docker must be lowercase
@@ -96,6 +98,6 @@ then add readymade template to that file
 
 then add the secrets to your github account(in settings>> secrets>> actions>> new repo secrets) to make sure that whatever secrets u have put in the main.yaml file for the deployemnet of the contd deployement of the(changes u have done to the code) contd integration. 
 ```
-```
+
 
 
