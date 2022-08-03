@@ -8,4 +8,3 @@ ipykernel
 dill
 evidently
 six
--e .

@@ -7,6 +7,9 @@ CI-CD Pipleine:
 CI: changing your code and sending the changes to the github 
 CD: When the deployement criteria satisfies then the trigger is triggered 
 
+I have done continuous deployement to the cloud(heroku) whenever there is something pushed onto the main branch of the GITHUB repository
+this trigger is added to the main.yaml file in the workflow of .github file  
+
 ```
 how to clone from github repo
 ```
