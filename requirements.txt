@@ -8,4 +8,6 @@ ipykernel
 dill
 evidently
 six
+ipywidgets
+pandas_profiling
 -e .
