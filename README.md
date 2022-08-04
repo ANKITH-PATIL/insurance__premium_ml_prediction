@@ -102,5 +102,10 @@ then add readymade template to that file
 then add the secrets to your github account(in settings>> secrets>> actions>> new repo secrets) to make sure that whatever secrets u have put in the main.yaml file for the deployemnet of the contd deployement of the(changes u have done to the code) contd integration. 
 ```
 
+create a new folder based on the name 0f the project(housing)
+
+create a new  file named (setup.py)
+
+
 
 
