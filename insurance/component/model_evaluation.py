@@ -1,10 +1,10 @@
-from premium.exception import PremiumException
-from premium.logger import logging
-from premium.constant import *
-from premium.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact, ModelTrainerArtifact, ModelEvaluationArtifact
-from premium.entity.config_entity import ModelEvaluationConfig
-from premium.entity.model_factory import evaluate_regression_model
-from premium.util.util import write_yaml_file, read_yaml_file, load_object, load_data
+from insurance.exception import insurance_exception
+from insurance.logger import logging
+from insurance.constant import *
+from insurance.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact, ModelTrainerArtifact, ModelEvaluationArtifact
+from insurance.entity.config_entity import ModelEvaluationConfig
+from insurance.entity.model_factory import evaluate_regression_model
+from insurance.util.util import write_yaml_file, read_yaml_file, load_object, load_data
 import os, sys
 import numpy as np
 
@@ -22,7 +22,7 @@ class ModelEvaluation:
             self.data_validation_artifact = data_validation_artifact
 
         except Exception as e:
-            raise PremiumException(e,sys) from e
+            raise insurance_exception(e,sys) from e
 
 
     def get_best_model(self):
@@ -45,7 +45,7 @@ class ModelEvaluation:
             return model
 
         except Exception as e:
-            raise PremiumException(e,sys) from e
+            raise insurance_exception(e,sys) from e
 
 
     def update_evaluation_report(self, model_evaluation_artifact: ModelEvaluationArtifact):
@@ -80,7 +80,7 @@ class ModelEvaluation:
             write_yaml_file(file_path=eval_file_path, data=model_eval_content)
 
         except Exception as e:
-            raise PremiumException(e, sys) from e
+            raise insurance_exception(e, sys) from e
 
 
 
@@ -156,7 +156,7 @@ class ModelEvaluation:
             return model_evaluation_artifact
 
         except Exception as e:
-            raise PremiumException(e,sys) from e
+            raise insurance_exception(e,sys) from e
 
     def __del__(self):
         logging.info(f"{'=' * 20}Model Evaluation log completed.{'=' * 20} ")
