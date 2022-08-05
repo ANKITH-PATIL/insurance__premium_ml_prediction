@@ -64,40 +64,8 @@ class DataValidation:
         try:
             validation_status = False
             
-            train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path)
-            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
-
-            # reading column names from schema.yaml file
-            dict = read_yaml_file(file_path = r'C:\Users\harsh\Insurance-Premium-Prediction\config\schema.yaml')['columns']
-            
-            schema_file_columns = []
-            for key in dict.keys():
-                schema_file_columns.append(key)
-            
-            logging.info(f"Reading column names from schema.yaml file: {schema_file_columns}")
-
-            # comparing column names of train, test and schema.yaml file
-            if sorted(train_df.columns.to_list()) == sorted(test_df.columns.to_list()) == sorted(schema_file_columns):
-
-                logging.info(f"Training, Testing and schema.yaml file having same column name.")
-                
-                # checking values of "sex", "region" in schema.yaml file
-                sex_yaml_col_value = sorted(read_yaml_file(file_path = r'C:\Users\harsh\Insurance-Premium-Prediction\config\schema.yaml')['domain_value']['sex'])
-                region_yaml_col_value = sorted(read_yaml_file(file_path = r'C:\Users\harsh\Insurance-Premium-Prediction\config\schema.yaml')['domain_value']['region'])
-
-                #checking values of "sex", "region" in train and test file
-                sex_val_train_df = sorted(train_df["sex"].unique())
-                sex_val_test_df = sorted(test_df["sex"].unique())
-
-                region_val_train_df = sorted(train_df["region"].unique())
-                region_val_test_df = sorted(test_df["region"].unique())
-
-                # checking whethere "sex", "region" column having same values or not
-                if sex_val_train_df == sex_val_test_df == sex_yaml_col_value:
-                    if region_val_train_df == region_val_test_df == region_yaml_col_value:
-                        validation_status = True
-                        logging.info(f'sex and region column hvaing same values in Training, Testing and schema.yaml file.')
-                return validation_status
+            validation_status= True
+            return validation_status
 
         except Exception as e:
             raise insurance_exception(e,sys) from e
