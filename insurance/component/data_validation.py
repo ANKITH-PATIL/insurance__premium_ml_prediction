@@ -1,5 +1,7 @@
+from insurance.constant import CONFIG_FILE_PATH, SCHEMA_FILE_PATH
 from insurance.exception import insurance_exception
 from insurance.logger import logging
+from insurance.constant import *
 import os,sys
 import pandas as pd
 from insurance.entity.config_entity import DataValidationConfig
@@ -60,11 +62,45 @@ class DataValidation:
             raise insurance_exception(e,sys) from e
 
     
-    def validate_dataset_schema(self) -> bool:
+    def validate_dataset_schema(self,schema_filepath:SCHEMA_FILE_PATH) -> bool:
         try:
             validation_status = False
+            train_df = pd.read_csv(self.data_ingestion_artifact.train_file_path)
+            test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
+
+            # reading column names from schema.yaml file
+            dict = read_yaml_file(file_path =schema_filepath)[DATASET_SCHEMA_COLUMNS_KEY]
             
-            validation_status= True
+            
+            schema_file_columns = []
+            for key in dict.keys():
+                schema_file_columns.append(key)
+            
+            logging.info(f"Reading column names from schema.yaml file: {schema_file_columns}")
+
+            # comparing column names of train, test and schema.yaml file
+            if sorted(train_df.columns.to_list()) == sorted(test_df.columns.to_list()) == sorted(schema_file_columns):
+
+                logging.info(f"Training, Testing and schema.yaml file having same column name.")
+                
+                # checking values of "sex", "region" in schema.yaml file
+                sex_yaml_col_value = sorted(read_yaml_file(file_path = schema_filepath)[DATASET_SCHEMA_DOMAIN_KEY][DATASET_SCHEMA_SEX_KEY])
+                region_yaml_col_value = sorted(read_yaml_file(file_path = schema_filepath)[DATASET_SCHEMA_DOMAIN_KEY][DATASET_SCHEMA_REGION_KEY])
+
+                #checking values of "sex", "region" in train and test file
+                sex_val_train_df = sorted(train_df[DATASET_SCHEMA_SEX_KEY].unique())
+                sex_val_test_df = sorted(test_df[DATASET_SCHEMA_SEX_KEY].unique())
+
+                region_val_train_df = sorted(train_df[DATASET_SCHEMA_REGION_KEY].unique())
+                region_val_test_df = sorted(test_df[DATASET_SCHEMA_REGION_KEY].unique())
+
+                # checking whethere "sex", "region" column having same values or not
+                if sex_val_train_df == sex_val_test_df == sex_yaml_col_value:
+                    if region_val_train_df == region_val_test_df == region_yaml_col_value:
+                        validation_status = True
+                        logging.info(f'sex and region column hvaing same values in Training, Testing and schema.yaml file.')
+            
+
             return validation_status
 
         except Exception as e:
@@ -120,6 +156,7 @@ class DataValidation:
 
     def initiate_data_validation(self) -> DataValidationArtifact:
         try:
+            
             self.is_train_test_file_exist()
             self.validate_dataset_schema()
             self.is_data_drift_found()

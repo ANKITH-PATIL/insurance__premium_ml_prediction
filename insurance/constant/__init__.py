@@ -6,10 +6,12 @@ def get_current_time_stamp():
 
 CURRENT_TIME_STAMP = get_current_time_stamp()
 
-ROOT_DIR = os.getcwd()
+ROOT_DIR = os.getcwd()#'c:\\Users\\Ankith\\machine_learning_project'
 CONFIG_DIR = "config"
 CONFIG_FILE_NAME = "config.yaml"
+SCHEMA_FILE_NAME="schema.yaml"
 CONFIG_FILE_PATH = os.path.join(ROOT_DIR, CONFIG_DIR, CONFIG_FILE_NAME)
+SCHEMA_FILE_PATH=os.path.join(ROOT_DIR,CONFIG_DIR,SCHEMA_FILE_NAME)
 
 
 # Training pipeline related variable
@@ -53,6 +55,9 @@ CATEGORICAL_COLUMN_KEY = "categorical_columns"
 TARGET_COLUMN_KEY = "target_column"
 
 DATASET_SCHEMA_COLUMNS_KEY = "columns"
+DATASET_SCHEMA_DOMAIN_KEY="domain_value"
+DATASET_SCHEMA_SEX_KEY="sex"
+DATASET_SCHEMA_REGION_KEY="region"
 
 
 # Model Trainer related variables
