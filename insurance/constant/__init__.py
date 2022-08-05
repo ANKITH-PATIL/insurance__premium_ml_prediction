@@ -10,9 +10,10 @@ ROOT_DIR = os.getcwd()#'c:\\Users\\Ankith\\machine_learning_project'
 CONFIG_DIR = "config"
 CONFIG_FILE_NAME = "config.yaml"
 SCHEMA_FILE_NAME="schema.yaml"
+MODEL_FILE_NAME="model.yaml"
 CONFIG_FILE_PATH = os.path.join(ROOT_DIR, CONFIG_DIR, CONFIG_FILE_NAME)
 SCHEMA_FILE_PATH=os.path.join(ROOT_DIR,CONFIG_DIR,SCHEMA_FILE_NAME)
-
+MODEL_FILE_PATH=os.path.join(ROOT_DIR,MODEL_FILE_NAME)
 
 # Training pipeline related variable
 TRAINING_PIPELINE_CONFIG_KEY = "training_pipeline_config"
