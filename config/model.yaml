@@ -26,20 +26,4 @@ model_selection:
       min_samples_leaf:
       - 4
 
-  module_2:
-    class: DecisionTreeRegressor
-    module: sklearn.tree
-    params:
-      criterion:
-      - squared_error
-      max_features:
-      - None
-    search_param_grid:
-      criterion:
-      - friedman_mse
-      - absolute_error
-      max_features:
-      - 'auto'
-      - 'sqrt'
-      - 'log2'
     
