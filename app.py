@@ -28,7 +28,7 @@ from flask import send_file, abort, render_template
 
 ROOT_DIR = os.getcwd()
 LOG_FOLDER_NAME = "logs"
-PIPELINE_FOLDER_NAME = "premium"
+PIPELINE_FOLDER_NAME = "insurance"
 SAVED_MODELS_DIR_NAME = "saved_models"
 MODEL_CONFIG_FILE_PATH = os.path.join(ROOT_DIR, CONFIG_DIR, "model.yaml")
 LOG_DIR = os.path.join(ROOT_DIR, LOG_FOLDER_NAME)
@@ -42,10 +42,10 @@ EXPENSES = "expenses"
 app = Flask(__name__)
 
 
-@app.route('/artifact', defaults={'req_path': 'premium'})
+@app.route('/artifact', defaults={'req_path': 'insurance'})
 @app.route('/artifact/<path:req_path>')
 def render_artifact_dir(req_path):
-    os.makedirs("premium", exist_ok=True)
+    os.makedirs("insurance", exist_ok=True)
     # Joining the base and the requested path
     print(f"req_path: {req_path}")
     abs_path = os.path.join(req_path)

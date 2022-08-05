@@ -158,7 +158,7 @@ class DataValidation:
         try:
             
             self.is_train_test_file_exist()
-            self.validate_dataset_schema()
+            self.validate_dataset_schema(SCHEMA_FILE_PATH)
             self.is_data_drift_found()
 
             data_validation_artifact = DataValidationArtifact(
