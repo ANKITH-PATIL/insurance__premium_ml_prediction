@@ -1,8 +1,6 @@
 # Insurance__Premium_ML_Prediction
 This machine learning project predicts the premium of the insurance
 
-# check why the artifact folders are not visible when we deploy the solution
-# check also why the predict premium value is not visible 
 ```
 CI-CD Pipleine:
 ```
