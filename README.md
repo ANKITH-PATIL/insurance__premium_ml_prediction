@@ -1,4 +1,4 @@
-# insurance__premium_ml_prediction
+# Insurance__Premium_ML_Prediction
 This machine learning project predicts the premium of the insurance
 
 # check why the artifact folders are not visible when we deploy the solution
