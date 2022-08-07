@@ -2,6 +2,8 @@
 
 Application url:
 [Insurance_Premium_Predictor](https://insurance-premiumapp.herokuapp.com/)
+
+
 This machine learning project predicts the premium of the insurance
 
 ```
