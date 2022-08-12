@@ -39,6 +39,7 @@ class ModelPusher:
 
         except Exception as e:
             raise insurance_exception(e,sys) from e
+            
 
 
     def initiate_model_pusher(self) -> ModelPusherArtifact:

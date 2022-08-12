@@ -109,7 +109,7 @@ class ModelTrainer:
             logging.info(f"Model Trainer Artifact: {model_trainer_artifact}")
             return model_trainer_artifact
         except Exception as e:
-            raise PremiumException(e, sys) from e
+            raise insurance_exception(e, sys) from e
 
     def __del__(self):
         logging.info(f"{'>>' * 30}Model trainer log completed.{'<<' * 30} ")
